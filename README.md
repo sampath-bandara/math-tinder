@@ -1,4 +1,4 @@
-# GitHub Repository: Express-MariaDB-Angular-App
+# GitHub Repository: MathTinder
 
 Welcome to the **Express-MariaDB-Angular-App** repository! This repository contains a full-stack web application that combines the power of Express.js for the backend, MariaDB for the database, and Angular for the frontend.
 
