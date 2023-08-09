@@ -64,3 +64,7 @@ License
 This project is licensed under the MIT License, allowing you to use, modify, and distribute the code for both commercial and non-commercial purposes.
 
 Thank you for exploring the Express-MariaDB-Angular-App repository. Feel free to reach out with any questions or feedback!
+
+git clone https://github.com/your-username/Express-MariaDB-Angular-App.git
+cd Express-MariaDB-Angular-App
+
