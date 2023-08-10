@@ -1,0 +1,59 @@
+<div class="main-container d-flex">
+  <div class="sidebar" id="side_nav">
+    <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
+      <img src="../assets/short-logo.png" class="d-md-none d-block w-100 mt-4"><img src="../assets/logo.png"
+        class="d-md-block d-none w-100">
+    </div>
+
+    <ul class="list-unstyled px-4 d-md-block d-none">
+      <li class="nav-link"><a class="text-decoration-none m-4 py-3 d-block" routerLink="/"
+          routerLinkActive="active"><i class="fa-solid fa-house fa-2xl me-4"></i>Home</a></li>
+      <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/profile" routerLinkActive="active"><i
+            class="fa-solid fa-user fa-2xl me-4"></i>Profile</a></li>
+      <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/about" routerLinkActive="active"><i
+            class="fa-solid fa-circle-info fa-2xl me-4"></i>About</a></li>
+      <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/contact"
+          routerLinkActive="active"><i class="fa-solid fa-pen-to-square fa-2xl me-4"></i>Contact Us</a></li>
+    </ul>
+
+    <ul class="list-unstyled px-4 d-md-none d-block">
+      <li class=""><a href="" class="text-decoration-none m-4 py-3 d-block" routerLink="/"
+          routerLinkActive="active"><i class="fa-solid fa-house fa-2xl me-4"></i></a></li>
+      <li class=""><a href="" class="text-decoration-none m-4 py-3 d-block" routerLink="/profile"
+          routerLinkActive="active"><i class="fa-solid fa-user fa-2xl me-4"></i></a></li>
+      <li class=""><a href="" class="text-decoration-none m-4 py-3 d-block" routerLink="/about"
+          routerLinkActive="active"><i class="fa-solid fa-circle-info fa-2xl me-4"></i></a></li>
+      <li class=""><a href="" class="text-decoration-none m-4 py-3 d-block" routerLink="/contact"
+          routerLinkActive="active"><i class="fa-solid fa-pen-to-square fa-2xl me-4"></i></a></li>
+    </ul>
+
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- First approach -->
+
+<!-- <div class="container-fluid vh-100">
+  <div class="row h-100">
+    <div class="col-3 left-column bg-primary-subtle"> -->
+<!-- Content for the left column (100px width) -->
+<!-- <img src="../assets/logo.png">
+    </div>
+    <div class="col bg-dark-subtle d-flex flex-column min-vh-100"> -->
+<!-- Content for the right column (rest of the width) -->
+<!-- <div class="flex-grow-1 full-height"> -->
+<!-- Content for the top row -->
+<!-- Top Row -->
+<!-- </div>
+        <div class="bg-primary-subtle c-bottom-nav-bar justify-content-between"> -->
+<!-- Content for the bottom row -->
+<!-- <img src="../assets/logo.png">
+          <img src="../assets/logo.png">
+          <img src="../assets/logo.png">
+          <img src="../assets/logo.png">
+        </div>
+    </div>
+  </div>
+</div> -->

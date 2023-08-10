@@ -1,0 +1,55 @@
+#side_nav {
+    background: #a8aaa8;
+    min-width: 250px;
+    max-width: 250px;
+}
+
+.content {
+    min-height: 100vh;
+    width: 100%;
+}
+
+.sidebar li.active {
+    background: #eee;
+    border-radius: 8px;
+}
+
+.sidebar li.active a, .sidebar li.active a:hover {
+    color: #000;
+}
+
+.sidebar li a {
+    color: #fff;
+}
+
+@media (max-width: 767px) {
+    #side_nav {
+        background: #a8aaa8;
+        min-width: 130px;
+        max-width: 130px;
+    }
+}
+
+/* Previous approach styles */
+/* .left-column {
+    display: none;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.c-bottom-nav-bar {
+    display: block;
+    height: 100px;
+} */
+
+/* Media Quaries */
+/* @media (min-width: 575px) {
+    .left-column {
+        display: block;
+    }
+    .c-bottom-nav-bar {
+        display: none;
+    }
+} */
