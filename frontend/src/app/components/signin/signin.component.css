@@ -1,0 +1,26 @@
+.bg-color {
+    /* book color */
+    background-color: #3f0e6a;
+    padding: 100px;
+    height: 700px;
+    border-radius: 60px;
+}
+
+.button-bg-color:disabled {
+    background: rgba(60, 3, 246, 0.591);
+}
+
+.button-bg-color {
+    background: rgb(59, 3, 246);
+    color: white;
+}
+
+.link-color {
+    /* color: rgb(59, 3, 246); */
+    color: #ce7624;
+    text-decoration: none;
+}
+
+.top-marging {
+    margin-top: 100px;
+}

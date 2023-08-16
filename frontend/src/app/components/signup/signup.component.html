@@ -1,1 +1,133 @@
-<p>signup works!</p>
+<div class="row top-marging text-white">
+    <div class="col-8 offset-2">
+        <form [formGroup]="registerFormInitial" (ngSubmit)="registerInit()" class="bg-color">
+            <h2 class="text-center mb-5 fs-1 fw-bold">Sign up</h2>
+            <div class="mb-5">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email">
+            </div>
+
+            <div class="mb-5">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" formControlName="password">
+            </div>
+            <div class="d-flex mb-5 justify-content-around">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="student"
+                        formControlName="role">
+                    <label class="form-label">Student</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" value="tutor" formControlName="role">
+                    <label class="form-label">Tutor</label>
+                </div>
+            </div>
+
+            <button type="submit" class="btn button-bg-color" data-bs-toggle="modal" data-bs-target="#studentRegisterModal"
+                [disabled]="registerFormInitial.invalid">Continue</button>
+        </form>
+    </div>
+</div>
+
+<!--  Modal -->
+<div class="modal fade" id="studentRegisterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="isStudent; else showTutorTitle">Student
+                    Register Form</h1>
+                <ng-template #showTutorTitle>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tutor Register Form</h1>
+                </ng-template>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Student register form -->
+                <form [formGroup]="registerFormStudent" (ngSubmit)="register()" *ngIf="isStudent; else showTutorForm">
+                    <div class="mb-5">
+                        <label class="form-label">Name</label>
+                        <input type="email" class="form-control" formControlName="name">
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="form-label">Grade</label>
+                        <input type="number" class="form-control" formControlName="grade">
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="form-label">Phone</label>
+                        <input type="number" class="form-control" formControlName="phone">
+                    </div>
+
+                    <div class="mb-5">
+                        <label class="form-label">Address</label>
+                        <input type="text" class="form-control" formControlName="address">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Image</label>
+                        <input class="form-control" type="file" (change)="onChange($event)" accept="image/jpeg">
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary"
+                            [disabled]="registerFormStudent.invalid" data-bs-dismiss="modal">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tutor register form -->
+<ng-template #showTutorForm>
+    <form [formGroup]="registerFormTutor" (ngSubmit)="register()">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="email" class="form-control" formControlName="name">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input type="number" class="form-control" formControlName="phone">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Qualification</label>
+            <select class="form-select" formControlName="qualification_id">
+                <option selected>Select your qualification level</option>
+                <option value="1">High School Graduated</option>
+                <option value="2">Bachelor's Degree</option>
+                <option value="3">Master's Degree</option>
+                <option value="4">PhD</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Experience</label>
+            <select class="form-select" formControlName="experience_id">
+                <option selected>Select the experience category</option>
+                <option value="1">Less than a year</option>
+                <option value="2">1 to 5 years</option>
+                <option value="3">5 to 10 years</option>
+                <option value="4">More than 10 years</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-control" formControlName="address">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Image</label>
+            <input class="form-control" type="file" (change)="onChange($event)" accept="image/jpeg">
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="registerFormTutor.invalid">Register</button>
+        </div>
+    </form>
+</ng-template>

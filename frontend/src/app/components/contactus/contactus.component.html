@@ -1,1 +1,18 @@
-<p>contactus works!</p>
+<!-- Horizontal Navbar -->
+<nav class="navbar navbar-expand-lg" *ngIf="isLoggedIn" data-bs-theme="dark">
+    <div class="container-fluid fs-4 text-white">
+        <div class="navbar-brand fs-3 font-family">Welcome, {{currentUserDetails.name}}!</div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="mx-0 mx-lg-5 bg-oval" routerLink="/requests" routerLinkActive="active">Requests</div>
+            <div class="bg-oval" routerLink="/find-a-tutor" routerLinkActive="active" *ngIf="isStudent">Find a Tutor</div>
+            <div class="me-4 d-block d-lg-none bg-oval" (click)="logoutAlert()">Logout</div>
+        </div>
+        <div class="me-4 d-none d-lg-block bg-oval" (click)="logoutAlert()">Logout</div>
+    </div>
+</nav>
+
+<h1 class="text-success">Contact Us</h1>

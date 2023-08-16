@@ -1,7 +1,37 @@
+.bg-image {
+    /* background-image: url('./../assets/2.jpeg'); */
+    /* background-color: rgb(41, 205, 208); */
+    /* main background color */
+    /* background-color: #0693d06b; */
+}
+
+.bg-picture {
+    background-image: url('./../assets/gome-u7.jpeg');
+}
+
+.logo-span-first {
+    font-family: 'Lobster', cursive;
+}
+
+.text-span-first {
+    color: #d1ac16;
+}
+
+.text-span-second {
+    color: red;
+}
+
+.logo-span-second {
+    font-family: 'Dancing Script', cursive;
+}
+
 #side_nav {
-    background: #a8aaa8;
+    /* Sidebar color */
+    background: #551172;
     min-width: 250px;
     max-width: 250px;
+    max-height: 100vh;
+    min-height: 100vh;
 }
 
 .content {
@@ -9,47 +39,30 @@
     width: 100%;
 }
 
-.sidebar li.active {
+.sidebar li:hover {
     background: #eee;
-    border-radius: 8px;
+    border-radius: 20px;
+    width: 220px;
 }
 
-.sidebar li.active a, .sidebar li.active a:hover {
+.sidebar li a:hover {
     color: #000;
 }
 
 .sidebar li a {
     color: #fff;
+    font-size: 22px;
+}
+
+ul {
+    font-family: Cambria;
 }
 
 @media (max-width: 767px) {
     #side_nav {
-        background: #a8aaa8;
+        /* background: #0693d0; */
+        background: #551172;
         min-width: 130px;
         max-width: 130px;
     }
 }
-
-/* Previous approach styles */
-/* .left-column {
-    display: none;
-}
-
-.full-height {
-    height: 100%;
-}
-
-.c-bottom-nav-bar {
-    display: block;
-    height: 100px;
-} */
-
-/* Media Quaries */
-/* @media (min-width: 575px) {
-    .left-column {
-        display: block;
-    }
-    .c-bottom-nav-bar {
-        display: none;
-    }
-} */

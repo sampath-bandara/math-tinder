@@ -9,6 +9,10 @@ import { AboutComponent } from './components/about/about.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SigninComponent } from './components/signin/signin.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RequestsComponent } from './components/requests/requests.component';
+import { FindatutorComponent } from './components/findatutor/findatutor.component';
 
 @NgModule({
   declarations: [
@@ -18,11 +22,16 @@ import { SigninComponent } from './components/signin/signin.component';
     AboutComponent,
     ContactusComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    RequestsComponent,
+    FindatutorComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,20 @@
+.bg-color {
+    /* book color */
+    background-color: #3f0e6a;
+    padding: 100px;
+    height: 600px;
+    border-radius: 60px;
+}
+
+.button-bg-color:disabled {
+    background: rgba(60, 3, 246, 0.591);
+}
+
+.button-bg-color {
+    background: rgb(59, 3, 246);
+    color: white;
+}
+
+.top-marging {
+    margin-top: 100px;
+}

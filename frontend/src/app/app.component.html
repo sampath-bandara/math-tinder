@@ -1,59 +1,39 @@
-<div class="main-container d-flex">
-  <div class="sidebar" id="side_nav">
-    <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
-      <img src="../assets/short-logo.png" class="d-md-none d-block w-100 mt-4"><img src="../assets/logo.png"
-        class="d-md-block d-none w-100">
+<div class="main-container d-flex bg-picture">
+  <div class="sidebar rounded-end-circle fw-bold" id="side_nav">
+    <div class="header-box px-2 pt-3 pb-4 pt-5 d-flex">
+      <!-- <img src="../assets/short-logo.png" class="d-md-none d-block w-100 mt-4"><img src="../assets/logo.png"
+        class="d-md-block d-none mt-4 w-100"> -->
+      <h4 class="display-3 mt-5 d-md-none d-block"><span class="text-span-first logo-span-first">M</span><span
+          class="text-span-second logo-span-second">T</span></h4>
+      <h4 class="display-6 mt-5 d-md-block d-none"><span class="text-span-first logo-span-first">Math</span><span
+          class="text-span-second logo-span-second">Tinder</span></h4>
     </div>
 
-    <ul class="list-unstyled px-4 d-md-block d-none">
-      <li class="nav-link"><a class="text-decoration-none m-4 py-3 d-block" routerLink="/"
-          routerLinkActive="active"><i class="fa-solid fa-house fa-2xl me-4"></i>Home</a></li>
+    <ul class="list-unstyled px-2 d-md-block d-none pt-5">
+      <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/" routerLinkActive="active"><i
+            class="fa-solid fa-house fa-xl me-4"></i>Home</a></li>
       <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/profile" routerLinkActive="active"><i
-            class="fa-solid fa-user fa-2xl me-4"></i>Profile</a></li>
+            class="fa-solid fa-user fa-xl me-4"></i>Profile</a></li>
       <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/about" routerLinkActive="active"><i
-            class="fa-solid fa-circle-info fa-2xl me-4"></i>About</a></li>
-      <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/contact"
-          routerLinkActive="active"><i class="fa-solid fa-pen-to-square fa-2xl me-4"></i>Contact Us</a></li>
+            class="fa-solid fa-circle-info fa-xl me-4"></i>About</a></li>
+      <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/contact" routerLinkActive="active"><i
+            class="fa-solid fa-pen-to-square fa-xl me-4"></i>Contact Us</a></li>
     </ul>
 
-    <ul class="list-unstyled px-4 d-md-none d-block">
-      <li class=""><a href="" class="text-decoration-none m-4 py-3 d-block" routerLink="/"
-          routerLinkActive="active"><i class="fa-solid fa-house fa-2xl me-4"></i></a></li>
+    <ul class="list-unstyled px-4 d-md-none d-block pt-4">
+      <li class=""><a href="" class="text-decoration-none m-4 py-3 d-block" routerLink="/" routerLinkActive="active"><i
+            class="fa-solid fa-house fa-xl me-4"></i></a></li>
       <li class=""><a href="" class="text-decoration-none m-4 py-3 d-block" routerLink="/profile"
-          routerLinkActive="active"><i class="fa-solid fa-user fa-2xl me-4"></i></a></li>
+          routerLinkActive="active"><i class="fa-solid fa-user fa-xl me-4"></i></a></li>
       <li class=""><a href="" class="text-decoration-none m-4 py-3 d-block" routerLink="/about"
-          routerLinkActive="active"><i class="fa-solid fa-circle-info fa-2xl me-4"></i></a></li>
+          routerLinkActive="active"><i class="fa-solid fa-circle-info fa-xl me-4"></i></a></li>
       <li class=""><a href="" class="text-decoration-none m-4 py-3 d-block" routerLink="/contact"
-          routerLinkActive="active"><i class="fa-solid fa-pen-to-square fa-2xl me-4"></i></a></li>
+          routerLinkActive="active"><i class="fa-solid fa-pen-to-square fa-xl me-4"></i></a></li>
     </ul>
 
   </div>
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
+  
+  <div class="content bg-image">
+    <!-- Main content goes here -->
+  <router-outlet></router-outlet>
 </div>
-
-<!-- First approach -->
-
-<!-- <div class="container-fluid vh-100">
-  <div class="row h-100">
-    <div class="col-3 left-column bg-primary-subtle"> -->
-<!-- Content for the left column (100px width) -->
-<!-- <img src="../assets/logo.png">
-    </div>
-    <div class="col bg-dark-subtle d-flex flex-column min-vh-100"> -->
-<!-- Content for the right column (rest of the width) -->
-<!-- <div class="flex-grow-1 full-height"> -->
-<!-- Content for the top row -->
-<!-- Top Row -->
-<!-- </div>
-        <div class="bg-primary-subtle c-bottom-nav-bar justify-content-between"> -->
-<!-- Content for the bottom row -->
-<!-- <img src="../assets/logo.png">
-          <img src="../assets/logo.png">
-          <img src="../assets/logo.png">
-          <img src="../assets/logo.png">
-        </div>
-    </div>
-  </div>
-</div> -->

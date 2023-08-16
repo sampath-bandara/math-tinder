@@ -1,0 +1,72 @@
+<!-- Horizontal Navbar -->
+<nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+    <div class="container-fluid fs-4 text-white">
+        <div class="navbar-brand fs-3 font-family">Welcome, {{currentUserDetails.name}}!</div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="mx-0 mx-lg-5 bg-oval" routerLink="/requests" routerLinkActive="active">Requests</div>
+            <div class="bg-oval" routerLink="/find-a-tutor" routerLinkActive="active" *ngIf="isStudent">Find a Tutor
+            </div>
+            <div class="me-4 d-block d-lg-none bg-oval" (click)="logoutAlert()">Logout</div>
+        </div>
+        <div class="me-4 d-none d-lg-block bg-oval" (click)="logoutAlert()">Logout</div>
+    </div>
+</nav>
+
+<!-- Tutor Request list -->
+<div *ngIf="isStudent; else createStudentRequests">
+    <div class="mt-5 mx-3" *ngFor="let request of myTutorRequests" data-bs-toggle="modal"
+        data-bs-target="#tutorDetailsModal">
+        <div class="card">
+            <div class="row g-0">
+                <div class="col-1">
+                    <img [src]="'http://localhost:3000/' + request.tutor.image" class="img-fluid rounded-start"
+                        style="height: 150px; min-width: 90px;" alt="...">
+                </div>
+                <div class="col-10">
+                    <div class="card-body">
+                        <h5 class="card-title">Name: {{request.tutor.name}}</h5>
+                        <p class="card-text">Email: {{request.tutor.email}}</p>
+                        <p class="card-text">Qualification: {{request.tutor.qualification_id}}</p>
+                        <p class="card-text">Experience: {{request.tutor.experience_id}}</p>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-outline-danger"
+                        (click)="deleteRequest(request.tutor.id)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Student requests list -->
+<ng-template #createStudentRequests>
+    <div class="mt-5 mx-3" *ngFor="let request of myStudentRequests" data-bs-toggle="modal"
+        data-bs-target="#tutorDetailsModal">
+        <div class="card">
+            <div class="row g-0">
+                <div class="col-1">
+                    <img [src]="'http://localhost:3000/' + request.student.image" class="img-fluid rounded-start"
+                        style="height: 150px; min-width: 90px;" alt="...">
+                </div>
+                <div class="col-10">
+                    <div class="card-body">
+                        <h5 class="card-title">Name: {{request.student.name}}</h5>
+                        <p class="card-text">Email: {{request.student.email}}</p>
+                        <p class="card-text">Grade: {{request.student.grade}}</p>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-outline-success"
+                        (clcik)="acceptStudent(request.student.id)">Accept</button>
+                    <button type="button" class="btn btn-outline-danger"
+                        (clcik)="rejectStudent(request.student.id)">Reject</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

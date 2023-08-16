@@ -21,7 +21,8 @@ const storage = multer.diskStorage({
         cb(null, 'uploads')
     },
     filename: function (req, file, cb) {
-        cb(null, file.originalname)
+        // cb(null, file.originalname)
+        cb(null, `${req.body.email}.jpg`)
     }
 });
 const upload = multer({ storage: storage })
@@ -41,7 +42,7 @@ Request.belongsTo(Student, {
 
 Request.belongsTo(Tutor, {
     foreignKey: 'tutor_id'
-});
+}); 
 
 //Test database connection
 config.authenticate().then(() => {
@@ -90,7 +91,7 @@ app.post('/student_login', function(req, res){
             // Compare clear text password to the hash value that was stored in DB
            bcrypt.compare(clearTextPassword, result.password, function(err, output){
                 if(output){
-                    res.status(200).send(result);
+                    res.status(200).send({"role": "student","name":result.name, "id":result.id});
                 } else {
                     res.status(401).send('Incorrect password');
                 }
@@ -121,7 +122,7 @@ app.post('/tutor_login', function(req, res){
             // Compare clear text password to the hash value that was stored in DB
            bcrypt.compare(clearTextPassword, result.password, function(err, output){
                 if(output){
-                    res.status(200).send(result);
+                    res.status(200).send({"role": "tutor","name":result.name, "id":result.id});
                 } else {
                     res.status(401).send('Incorrect password');
                 }
@@ -278,7 +279,10 @@ app.get('/filter/:experience_id', (req, res) => {
 //Send a tutor request
 app.post('/tutor_requets', (req, res) => {
     let requestData = req.body;
+
+    console.log("1: "+requestData);
     requestData.status = 'pending';
+    console.log("2: "+requestData);
 
     //Filter the relevant row basede on the tutor_id and student_id
     let data = {
@@ -317,8 +321,7 @@ app.patch('/student_requets/:tutor_id/:student_id', (req, res) => {
         where: {
             tutor_id: tutorId,
             student_id: studentId
-        },
-        include: [Student]
+        }
     };
 
     // Find the record based on the studentId and the tutorId
@@ -375,6 +378,63 @@ app.get('/tutor_profile/:tutor_id', (req, res) => {
         console.log(err);
     });
 });
+
+//Tutor profile update
+app.put('/tutors/:tutor_id', (req, res) => {
+
+    let tutorId = req.params.tutor_id;
+
+    if(req.file) {
+        req.body.image = `${user_data.email}.jpg`;
+    } else {
+        req.body.image = 'default.jpg';
+    }
+
+    Tutor.findByPk(tutorId).then((result) => {
+
+        if (result) {
+
+            Object.assign(result, req.body);
+
+            result.save().then(() => {
+                res.status(200).send(result);
+            });
+        } else {
+            res.status(404).send('Tutor not found');
+        }
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
+});
+
+//Student profile update
+app.put('/students/:student_id', (req, res) => {
+
+    let studentId = req.params.tutor_id;
+
+    if(req.file) {
+        req.body.image = `${user_data.email}.jpg`;
+    } else {
+        req.body.image = 'default.jpg';
+    }
+
+    Student.findByPk(studentId).then((result) => {
+
+        if (result) {
+
+            Object.assign(result, req.body);
+
+            result.save().then(() => {
+                res.status(200).send(result);
+            });
+        } else {
+            res.status(404).send('Student not found');
+        }
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
+});
+
 
 //Server
 app.listen(3000, function () {

@@ -1,0 +1,18 @@
+.bg-oval {
+    background: #551172;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-family: Cambria;
+}
+
+.font-family {
+    font-family: Cambria;
+}
+
+@media (max-width: 991px) {
+    .bg-oval {
+        background: none;
+        font-family: Cambria;
+    }
+}
