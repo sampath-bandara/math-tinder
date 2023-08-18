@@ -1,4 +1,4 @@
-<div class="main-container d-flex bg-picture">
+<div class="d-flex bg-picture">
   <div class="sidebar rounded-end-circle fw-bold" id="side_nav">
     <div class="header-box px-2 pt-3 pb-4 pt-5 d-flex">
       <!-- <img src="../assets/short-logo.png" class="d-md-none d-block w-100 mt-4"><img src="../assets/logo.png"
@@ -13,7 +13,7 @@
       <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/" routerLinkActive="active"><i
             class="fa-solid fa-house fa-xl me-4"></i>Home</a></li>
       <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/profile" routerLinkActive="active"><i
-            class="fa-solid fa-user fa-xl me-4"></i>Profile</a></li>
+            class="fa-solid fa-user fa-xl profile-margin-end"></i>Profile</a></li>
       <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/about" routerLinkActive="active"><i
             class="fa-solid fa-circle-info fa-xl me-4"></i>About</a></li>
       <li class=""><a class="text-decoration-none m-4 py-3 d-block" routerLink="/contact" routerLinkActive="active"><i
@@ -32,8 +32,17 @@
     </ul>
 
   </div>
-  
+
   <div class="content bg-image">
     <!-- Main content goes here -->
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<!-- <div class="col bg-footer">
+  <footer class="text-center fw-bold mt-2 fs-6">
+      <p>&copy; 2023 Math Tinder. All rights reserved.</p>
+  </footer>
+</div> -->
+<div class="col bg-footer text-center fw-bold fs-6">
+  <p class="inner-bg-color mt-3">&copy; 2023 Math Tinder. All rights reserved.</p>
 </div>

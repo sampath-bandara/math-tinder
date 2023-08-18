@@ -8,60 +8,59 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="mx-0 mx-lg-5 bg-oval" routerLink="/requests" routerLinkActive="active">Requests</div>
-            <div class="bg-oval" routerLink="/find-a-tutor" routerLinkActive="active" *ngIf="isStudent">Find a Tutor</div>
+            <div class="bg-oval" routerLink="/find-a-tutor" routerLinkActive="active" *ngIf="isStudent">Find a Tutor
+            </div>
             <div class="me-4 d-block d-lg-none bg-oval" (click)="logoutAlert()">Logout</div>
         </div>
         <div class="me-4 d-none d-lg-block bg-oval" (click)="logoutAlert()">Logout</div>
     </div>
 </nav>
 
-<!-- Tutor Request list -->
+<!-- My tutor list -->
 <div *ngIf="isStudent; else createStudentRequests">
-    <div class="mt-5 mx-3" *ngFor="let request of myTutors" data-bs-toggle="modal"
-        data-bs-target="#tutorDetailsModal">
-        <div class="card">
-            <div class="row g-0">
-                <div class="col-1">
-                    <img [src]="'http://localhost:3000/' + request.tutor.image" class="img-fluid rounded-start"
-                        style="height: 150px; min-width: 90px;" alt="...">
-                </div>
-                <div class="col-10">
-                    <div class="card-body">
-                        <h5 class="card-title">Name: {{request.tutor.name}}</h5>
-                        <p class="card-text">Email: {{request.tutor.email}}</p>
-                        <p class="card-text">Qualification: {{request.tutor.qualification_id}}</p>
-                        <p class="card-text">Experience: {{request.tutor.experience_id}}</p>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 font-family" *ngFor="let request of myTutors">
+                <div class="profile-card-student">
+                    <img class="profile-picture" [src]="'http://localhost:3000/' + request.tutor.image"
+                        alt="'image' + request.tutor.id">
+                    <div>
+                        <h5 class=""><span class="fw-bold" style="color: #551172;">{{request.tutor.name}}</span></h5>
+                        <h6 class=""><i class="fa-solid fa-envelope fa-xs me-2"></i><span class="fw-bold">Email:</span> {{request.tutor.email}}</h6>
+                        <h6 class=""><i class="fa-solid fa-phone fa-xs me-2"></i><span class="fw-bold">Phone:</span> {{request.tutor.phone}}</h6>
+                        <h6 class=""><i class="fa-solid fa-graduation-cap fa-xs me-1"></i><span class="fw-bold">Qualification:</span> {{request.tutor.qualification.level}}</h6>
+                        <h6 class=""><i class="fa-solid fa-chalkboard-user fa-xs me-1"></i><span class="fw-bold">Experience:</span> {{request.tutor.experience.category}}</h6>
+                        <h6 class=""><i class="fa-solid fa-location-dot fa-sm me-2"></i><span class="fw-bold">Address:</span> {{request.tutor.address}}</h6>
+                        <button type="button" class="btn btn-danger btn-sm fw-bold"
+                            (click)="deleteTutor(request.tutor.id, request.tutor.name)"
+                            style="--bs-btn-border-radius: 30px;">Delete</button>
                     </div>
-                </div>
-                <div class="col-1">
-                    <button type="button" class="btn btn-outline-danger"
-                        (click)="deleteRequest(request.tutor.id)">Delete</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Student requests list -->
+<!-- My student list -->
 <ng-template #createStudentRequests>
-    <div class="mt-5 mx-3" *ngFor="let request of myStudents" data-bs-toggle="modal"
-        data-bs-target="#tutorDetailsModal">
-        <div class="card">
-            <div class="row g-0">
-                <div class="col-1">
-                    <img [src]="'http://localhost:3000/' + request.student.image" class="img-fluid rounded-start"
-                        style="height: 150px; min-width: 90px;" alt="...">
-                </div>
-                <div class="col-10">
-                    <div class="card-body">
-                        <h5 class="card-title">Name: {{request.student.name}}</h5>
-                        <p class="card-text">Email: {{request.student.email}}</p>
-                        <p class="card-text">Grade: {{request.student.grade}}</p>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 font-family" *ngFor="let request of myStudents">
+                <div class="profile-card-tutor">
+                    <img class="profile-picture" [src]="'http://localhost:3000/' + request.student.image"
+                        alt="'image' + request.student.id">
+                    <div>
+                        <h5 class=""><span class="fw-bold" style="color: #551172;">{{request.student.name}}</span></h5>
+                        <h6 class=""><i class="fa-solid fa-envelope fa-xs me-2"></i><span class="fw-bold">Email:</span> {{request.student.email}}</h6>
+                        <h6 class=""><i class="fa-solid fa-book-open fa-xs me-2"></i><span class="fw-bold">Grade:</span> {{request.student.grade}}</h6>
+                        <h6 class=""><i class="fa-solid fa-phone fa-xs me-2"></i><span class="fw-bold">Phone:</span> {{request.student.phone}}</h6>
+                        <h6 class=""><i class="fa-solid fa-location-dot fa-sm me-2"></i><span class="fw-bold">Address:</span> {{request.student.address}}</h6>
+                        <button type="button" class="btn btn-danger btn-sm fw-bold"
+                            (click)="deleteStudent(request.student.id, request.student.name)"
+                            style="--bs-btn-border-radius: 30px;">Delete</button>
                     </div>
-                </div>
-                <div class="col-1">
-                    <button type="button" class="btn btn-outline-danger"
-                        (clcik)="deleteRequest(request.student.id)">Delete</button>
                 </div>
             </div>
         </div>

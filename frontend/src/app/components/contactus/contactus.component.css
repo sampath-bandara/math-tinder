@@ -10,6 +10,27 @@
     font-family: Cambria;
 }
 
+h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #d1ac16;
+}
+
+input, textarea {
+    background-color: #f3e1fb;
+}
+
+.bg-color {
+    /* book color */
+    background-color: #3f0e6a44;
+    padding: 50px;
+    min-height: 600px;
+    border-radius: 60px;
+}
+
+.button-bg-color {
+    background: #891965;
+}
+
 @media (max-width: 991px) {
     .bg-oval {
         background: none;

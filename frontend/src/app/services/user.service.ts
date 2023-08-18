@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Itutor } from '../interfaces/itutor';
 import { Istudent } from '../interfaces/istudent';
@@ -77,10 +77,18 @@ export class UserService {
   }
 
   updateStudentProfile(userId: number, formData: any) {
-    return this.httpClient.get<Itutor>(`http://localhost:3000/tutors/${userId}`, formData);
+    return this.httpClient.put<Istudent>(`http://localhost:3000/students/${userId}`, formData);
   }
 
   updateTutorProfile(userId: number, formData: any) {
-    return this.httpClient.get<Istudent>(`http://localhost:3000/students/${userId}`, formData);
+    return this.httpClient.put<Itutor>(`http://localhost:3000/tutors/${userId}`, formData);
+  }
+
+  deleteRequest(student_id:number, tutor_id:number) {
+    return this.httpClient.delete<Irequest>(`http://localhost:3000/requests/${student_id}/${tutor_id}`);
+  }
+
+  sendContactMessage(formData:any) {
+    return this.httpClient.post<Istudent>(`http://localhost:3000/contact_us`, formData);
   }
 }

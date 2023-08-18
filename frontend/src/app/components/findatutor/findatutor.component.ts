@@ -20,7 +20,7 @@ export class FindatutorComponent {
 
   constructor(private router: Router, private userService: UserService, private formBuilder: FormBuilder) {
     this.filterForm = formBuilder.group({
-      experience_id: ['']
+      experience_id: [0]
     });
 
     let data = localStorage.getItem('currentUser');
@@ -63,11 +63,11 @@ export class FindatutorComponent {
   //   this.filteredTutor = this.allTutors.filter(tutor => tutor.id === tutorId);
   // }
 
-  sendTutorRequestAlert(tutorId: number) {
+  sendTutorRequestAlert(tutorId: number, tutorName:string) {
     let formData: any;
     formData = { "tutor_id": tutorId, "student_id": this.currentUserDetails.id };
 
-    let text = "Are you sure you want to send a request?";
+    let text = `Send a request to tutor, ${tutorName} ?`;
     if (confirm(text) == true) {
       this.sendTutorRequest(formData);
     }

@@ -10,6 +10,46 @@
     font-family: Cambria;
 }
 
+form label {
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Cambria;
+}
+
+input, select {
+    background-color: #f3e1fb;
+}
+
+input[type=file]::file-selector-button {
+    background-color: #6d1175;
+    color: white;
+}
+
+/* Doesn't work. Need to look at it again */
+input[type=file]::file-selector-button:hover {
+    background-color: #d3b014;
+    color: black;
+}
+
+.profile-pic {
+    border-radius: 30px;
+    width: 300px;
+    height: 300px;
+    border: 2px solid white;
+    /* margin-top: 180px; */
+}
+
+.bg {
+    background-color: #3f0e6a44;
+    border-radius: 30px;
+    padding: 20px 10px 20px 10px;
+}
+
+.button-bg-color {
+    background: #891965;
+    color: white;
+}
+
 @media (max-width: 991px) {
     .bg-oval {
         background: none;

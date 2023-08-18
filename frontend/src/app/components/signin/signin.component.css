@@ -1,18 +1,22 @@
 .bg-color {
     /* book color */
-    background-color: #3f0e6a;
+    background-color: #3f0e6a44;
     padding: 100px;
     height: 700px;
     border-radius: 60px;
 }
 
 .button-bg-color:disabled {
-    background: rgba(60, 3, 246, 0.591);
+    background: #891965;
 }
 
 .button-bg-color {
-    background: rgb(59, 3, 246);
+    background: #891965;
     color: white;
+}
+
+input {
+    background-color: #f3e1fb;
 }
 
 .link-color {
@@ -23,4 +27,9 @@
 
 .top-marging {
     margin-top: 100px;
+}
+
+h2 {
+    font-family: 'Dancing Script', cursive;
+    color: #d1ac16;
 }

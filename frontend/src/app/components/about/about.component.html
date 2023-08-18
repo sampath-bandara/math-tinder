@@ -8,11 +8,124 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="mx-0 mx-lg-5 bg-oval" routerLink="/requests" routerLinkActive="active">Requests</div>
-            <div class="bg-oval" routerLink="/find-a-tutor" routerLinkActive="active" *ngIf="isStudent">Find a Tutor</div>
+            <div class="bg-oval" routerLink="/find-a-tutor" routerLinkActive="active" *ngIf="isStudent">Find a Tutor
+            </div>
             <div class="me-4 d-block d-lg-none bg-oval" (click)="logoutAlert()">Logout</div>
         </div>
         <div class="me-4 d-none d-lg-block bg-oval" (click)="logoutAlert()">Logout</div>
     </div>
 </nav>
 
-<h1 class="text-success">About</h1>
+<div class="row mt-5 font-family">
+    <div class="col-10 offset-1 bg">
+        <div class="text-white">
+            <header>
+                <h1 class="display-5 mt-3 text-center"><span class="text-span-first logo-span-first">Math</span><span
+                    class="text-span-second logo-span-second">Tinder</span></h1>
+                <h4 class="text-center mb-5 font-top">An app to match students with math tutors...</h4>
+            </header>
+
+            <section>
+                <h2 class="text-center">Introduction</h2>
+                <p>Welcome to Math Tinder, your platform for finding experienced math tutors to help you excel in your
+                    studies!
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-center">Our Mission</h2>
+                <p>At Math Tinder, our mission is to make math learning enjoyable and accessible for all students. We
+                    connect
+                    you
+                    with skilled tutors who can provide personalized support in various math topics.</p>
+            </section>
+
+            <section>
+                <h2 class="text-center">How It Works</h2>
+                <p>Math Tinder uses a matching algorithm to pair you with the most suitable math tutor based on your
+                    learning
+                    preferences and needs. Simply create an account, provide your preferences, and start connecting with
+                    tutors.
+                </p>
+            </section>
+
+            <section>
+                <h2 class="text-center">Privacy Policy</h2>
+
+                <p>Your privacy is important to us at Math Tinder. This Privacy Policy outlines how we collect, use, and
+                    protect your personal information when you use our app.</p>
+
+                <div class="row mt-5">
+                    <div class="col-1"><i class="fa-solid fa-shield-halved fa-xl"></i></div>
+                    <div class="col-11">
+                        <h3>Information We Collect</h3>
+                    </div>
+                </div>
+
+
+                <p>We collect and store the following information:</p>
+                <ul>
+                    <li>Your name and email address when you create an account</li>
+                    <li>Your preferences and learning goals for matching with suitable tutors</li>
+                    <li>Usage data, such as interactions with the app and tutor sessions</li>
+                </ul>
+
+                <div class="row mt-5">
+                    <div class="col-1"><i class="fa-solid fa-shield-halved fa-xl"></i></div>
+                    <div class="col-11">
+                        <h3>How We Use Your Information</h3>
+                    </div>
+                </div>
+
+                <p>We use your information to:</p>
+                <ul>
+                    <li>Match you with suitable math tutors based on your preferences</li>
+                    <li>Improve our app's functionality and user experience</li>
+                    <li>Send you relevant notifications and updates about the app</li>
+                </ul>
+
+                <div class="row mt-5">
+                    <div class="col-1"><i class="fa-solid fa-shield-halved fa-xl"></i></div>
+                    <div class="col-11">
+                        <h3>Data Security</h3>
+                    </div>
+                </div>
+
+                <p>We take measures to protect your personal information from unauthorized access and disclosure. Our
+                    app uses industry-standard security protocols to safeguard your data.</p>
+
+                <div class="row mt-5">
+                    <div class="col-1"><i class="fa-solid fa-shield-halved fa-xl"></i></div>
+                    <div class="col-11">
+                        <h3>Third-Party Services</h3>
+                    </div>
+                </div>
+
+                <p>We may use third-party services to analyze app usage and performance. These services may collect and
+                    store data in accordance with their own privacy policies.</p>
+
+                <div class="row mt-5">
+                    <div class="col-1"><i class="fa-solid fa-shield-halved fa-xl"></i></div>
+                    <div class="col-11">
+                        <h3>Your Choices</h3>
+                    </div>
+                </div>
+
+                <p>You can:</p>
+                <ul>
+                    <li>Access, update, or delete your account information</li>
+                    <li>Opt-out of receiving non-essential communications</li>
+                </ul>
+
+                <h2 class="text-center my-3">Contact Us</h2>
+                <p>If you have any questions or concerns about our Privacy Policy, please <a
+                        class="text-decoration-none fs-5" routerLink="/contact" routerLinkActive="active">contact us.</a></p>
+            </section>
+        </div>
+    </div>
+    <!-- <div class="col-10 offset-1 bg-footer">
+        <footer class="text-center fw-bold mt-2 fs-5">
+            <p>&copy; 2023 Math Tinder. All rights reserved.</p>
+        </footer>
+    </div> -->
+</div>

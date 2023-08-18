@@ -1,15 +1,27 @@
 <div class="row top-marging text-white">
     <div class="col-8 offset-2">
         <form [formGroup]="registerFormInitial" (ngSubmit)="registerInit()" class="bg-color">
-            <h2 class="text-center mb-5 fs-1 fw-bold">Sign up</h2>
+            <h2 class="text-center mb-5 display-5 fw-bold">Sign-up</h2>
             <div class="mb-5">
                 <label class="form-label">Email</label>
                 <input type="email" class="form-control" formControlName="email">
+
+                <span *ngIf="emailFormControl.touched && emailFormControl.errors?.['required']">
+                    The email field is required
+                </span>
+        
+                <span *ngIf="emailFormControl.dirty && emailFormControl.errors?.['email']">
+                    The email field must be a valid email address.
+                </span>
             </div>
 
             <div class="mb-5">
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" formControlName="password">
+
+                <span *ngIf="passwordFormControl.touched && passwordFormControl.errors?.['required']">
+                    The password field is required
+                </span>
             </div>
             <div class="d-flex mb-5 justify-content-around">
                 <div class="form-check">
@@ -34,10 +46,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel" *ngIf="isStudent; else showTutorTitle">Student
+                <h1 class="modal-title fs-3" *ngIf="isStudent; else showTutorTitle">Student
                     Register Form</h1>
                 <ng-template #showTutorTitle>
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tutor Register Form</h1>
+                    <h1 class="modal-title fs-3">Tutor Register Form</h1>
                 </ng-template>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -47,21 +59,45 @@
                     <div class="mb-5">
                         <label class="form-label">Name</label>
                         <input type="email" class="form-control" formControlName="name">
+
+                        <span *ngIf="studentNameFormControl.touched && studentNameFormControl.errors?.['required']">
+                            The name field is required.
+                        </span>
+                
+                        <span *ngIf="studentNameFormControl.dirty && studentNameFormControl.errors?.['minlength']">
+                            The name field must be atleast 5 characters.
+                        </span>
+                
+                        <span *ngIf="studentNameFormControl.dirty && studentNameFormControl.errors?.['prohibited']">
+                            Name contains a prohibited word.
+                        </span>
                     </div>
 
                     <div class="mb-5">
                         <label class="form-label">Grade</label>
                         <input type="number" class="form-control" formControlName="grade">
+
+                        <span *ngIf="studentGradeFormControl.touched && studentGradeFormControl.errors?.['required']">
+                            The grade field is required.
+                        </span>
                     </div>
 
                     <div class="mb-5">
                         <label class="form-label">Phone</label>
                         <input type="number" class="form-control" formControlName="phone">
+
+                        <span *ngIf="studentPhoneFormControl.touched && studentPhoneFormControl.errors?.['required']">
+                            The phone field is required.
+                        </span>
                     </div>
 
                     <div class="mb-5">
                         <label class="form-label">Address</label>
                         <input type="text" class="form-control" formControlName="address">
+
+                        <span *ngIf="studentAddressFormControl.touched && studentAddressFormControl.errors?.['required']">
+                            The address field is required.
+                        </span>
                     </div>
 
                     <div class="mb-3">
@@ -70,8 +106,8 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary"
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                        <button type="submit" class="btn button-bg-color"
                             [disabled]="registerFormStudent.invalid" data-bs-dismiss="modal">Register</button>
                     </div>
                 </form>
@@ -86,11 +122,27 @@
         <div class="mb-3">
             <label class="form-label">Name</label>
             <input type="email" class="form-control" formControlName="name">
+            
+            <span *ngIf="tutorNameFormControl.touched && tutorNameFormControl.errors?.['required']">
+                The name field is required.
+            </span>
+    
+            <span *ngIf="tutorNameFormControl.dirty && tutorNameFormControl.errors?.['minlength']">
+                The name field must be atleast 5 characters.
+            </span>
+    
+            <span *ngIf="tutorNameFormControl.dirty && tutorNameFormControl.errors?.['prohibited']">
+                Name contains a prohibited word.
+            </span>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Phone</label>
             <input type="number" class="form-control" formControlName="phone">
+
+            <span *ngIf="tutorPhoneFormControl.touched && tutorPhoneFormControl.errors?.['required']">
+                The phone field is required
+            </span>
         </div>
 
         <div class="mb-3">
@@ -102,6 +154,10 @@
                 <option value="3">Master's Degree</option>
                 <option value="4">PhD</option>
             </select>
+
+            <span *ngIf="tutorQualificationFormControl.touched && tutorQualificationFormControl.errors?.['required']">
+                The qualification field is required
+            </span>
         </div>
 
         <div class="mb-3">
@@ -113,11 +169,19 @@
                 <option value="3">5 to 10 years</option>
                 <option value="4">More than 10 years</option>
             </select>
+
+            <span *ngIf="tutorExperinceFormControl.touched && tutorExperinceFormControl.errors?.['required']">
+                The experience field is required
+            </span>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Address</label>
             <input type="text" class="form-control" formControlName="address">
+
+            <span *ngIf="tutorAddressFormControl.touched && tutorAddressFormControl.errors?.['required']">
+                The address field is required
+            </span>
         </div>
 
         <div class="mb-3">
@@ -126,8 +190,8 @@
         </div>
 
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" [disabled]="registerFormTutor.invalid">Register</button>
+            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+            <button type="submit" class="btn button-bg-color" data-bs-dismiss="modal" [disabled]="registerFormTutor.invalid">Register</button>
         </div>
     </form>
 </ng-template>

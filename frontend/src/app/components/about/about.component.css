@@ -10,6 +10,44 @@
     font-family: Cambria;
 }
 
+.bg {
+    background-color: #3f0e6a44;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+section {
+    margin-left: 20px;
+}
+
+.font-top {
+    font-family: 'Dancing Script', cursive;
+    color: #d1ac16;
+    font-size: 35px;
+}
+
+/* .bg-footer {
+    background-color: #ea9b13;
+    color: black;
+    padding: 5px;
+} */
+
+.logo-span-first {
+    font-family: 'Lobster', cursive;
+}
+
+.text-span-first {
+    color: #d1ac16;
+}
+
+.text-span-second {
+    color: red;
+}
+
+.logo-span-second {
+    font-family: 'Dancing Script', cursive;
+}
+
 @media (max-width: 991px) {
     .bg-oval {
         background: none;

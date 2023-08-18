@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class RequestsComponent {
 
   isStudent: boolean = true;
-  currentUserDetails: { role: string, name: string, id:number } = { role: '', name: '', id:0 };
+  currentUserDetails: { role: string, name: string, id: number } = { role: '', name: '', id: 0 };
   myStudentRequests!: Irequest[];
   myTutorRequests!: Irequest[];
 
@@ -22,21 +22,21 @@ export class RequestsComponent {
       this.isStudent = false;
     }
 
-    if(this.isStudent) {
+    if (this.isStudent) {
 
       this.userService.getTutorRequests(this.currentUserDetails.id).subscribe({
-        next:(results) => {
+        next: (results) => {
           this.myTutorRequests = results;
-          console.log(this.myTutorRequests);
+          // console.log(this.myTutorRequests);
         }
       });
 
     } else {
 
       this.userService.getStudentsRequests(this.currentUserDetails.id).subscribe({
-        next:(results) => {
+        next: (results) => {
           this.myStudentRequests = results;
-          console.log(this.myStudentRequests);
+          // console.log(this.myStudentRequests);
         }
       });
 
@@ -44,44 +44,72 @@ export class RequestsComponent {
 
   }
 
-  deleteRequest(tutor_id:number) {
-    console.log(tutor_id);
-  }
-
-  acceptStudent(student_id:number) {
-    let status = "accepted";
-    console.log(student_id);
-    // this.acceptOrRejectAlert(student_id, status);
-  }
-
-  rejectStudent(student_id:number) {
-    let status = "rejected";
-    console.log(student_id);
-    // this.acceptOrRejectAlert(student_id, status);
-  }
-
-  acceptOrRejectAlert(student_id:number, status:string) {
-    console.log(student_id,status);
- let text = "";
-    if(status === "accepted") {
-      text = "Are you sure you want to accept this student?";
-    } else {
-      text = "Are you sure you want to reject this student?";
-    }
-    
+  deleteRequest(tutor_id: number, tutor_name:string) {
+    let text = `Delete the request for the tutor, ${tutor_name} ?`;
     if (confirm(text) == true) {
-      this.acceptOrReject(student_id, status);
-    } 
+      this.userService.deleteRequest(this.currentUserDetails.id, tutor_id).subscribe({
+        next: (result) => {
+          alert("Request deleted successfully");
+
+          // Get tutor array index
+        let index = this.myTutorRequests.findIndex((s) => {
+          return s.id === tutor_id;
+        });
+
+        // Delete student record
+        this.myTutorRequests.splice(index, 1);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
   }
 
-  acceptOrReject(student_id:number, status:string) {
-    this.userService.acceptOrReject(this.currentUserDetails.id,student_id,status).subscribe({
+  acceptStudent(student_id: number, student_name:string) {
+    let status = "accepted";
+    // console.log(student_id);
+    this.acceptOrRejectAlert(student_id, status, student_name);
+  }
+
+  rejectStudent(student_id: number, student_name:string) {
+    let status = "rejected";
+    // console.log(student_id);
+    this.acceptOrRejectAlert(student_id, status, student_name);
+  }
+
+  acceptOrRejectAlert(student_id: number, status: string, student_name:string) {
+    console.log(student_id, status);
+    let text = "";
+    if (status === "accepted") {
+      text = `Accept the student, ${student_name} ?`;
+    } else {
+      text = `Reject the student, ${student_name} ?`;
+    }
+
+    if (confirm(text) == true) {
+      this.acceptOrReject(student_id, { "status": status });
+    }
+  }
+
+  acceptOrReject(student_id: number, status: any) {
+    this.userService.acceptOrReject(this.currentUserDetails.id, student_id, status).subscribe({
       next: (results) => {
-        if(status === "accepted") {
+        // console.log(results);
+        if (status === "accepted") {
           alert('Student was accepted!');
         } else {
           alert('Student was rejected!');
         }
+
+        // Get student array index
+        let index = this.myStudentRequests.findIndex((s) => {
+          return s.id === student_id;
+        });
+
+        // Delete student record
+        this.myStudentRequests.splice(index, 1);
+
       },
       error: (err) => {
         console.log(err);
@@ -93,7 +121,7 @@ export class RequestsComponent {
     let text = "Are you sure?";
     if (confirm(text) == true) {
       this.logout();
-    } 
+    }
   }
 
   logout() {

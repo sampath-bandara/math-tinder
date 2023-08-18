@@ -20,6 +20,15 @@ export class SigninComponent {
     });
   }
 
+   //Getter methods
+   get passwordFormControl() {
+    return this.loginForm.get('password')!;
+  }
+
+  get emailFormControl() {
+    return this.loginForm.get('email')!;
+  }
+
   login(){
     let formData = this.loginForm.value;
 

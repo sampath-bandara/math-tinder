@@ -58,11 +58,31 @@ ul {
     font-family: Cambria;
 }
 
+.profile-margin-end {
+    margin-right: 31px;
+}
+
+.bg-footer {
+    background-color: #100525;
+    color: black;
+    padding: 5px;
+}
+
+.inner-bg-color {
+    background-color: #ea9b13;
+}
+
 @media (max-width: 767px) {
     #side_nav {
         /* background: #0693d0; */
         background: #551172;
         min-width: 130px;
         max-width: 130px;
+    }
+
+    .sidebar li:hover {
+        background: #eee;
+        border-radius: 20px;
+        width: 80px;
     }
 }

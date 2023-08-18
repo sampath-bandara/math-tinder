@@ -10,6 +10,37 @@
     font-family: Cambria;
 }
 
+
+.profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.profile-card {
+    height: 220px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 60px;
+    margin: 20px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f3e1fb;
+}
+
+.custom-width {
+    max-width: 600px;
+}
+
+.btn-color {
+    background-color: #8b1c61;
+    color: white;
+}
+
 @media (max-width: 991px) {
     .bg-oval {
         background: none;

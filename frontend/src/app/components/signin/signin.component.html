@@ -1,15 +1,27 @@
 <div class="row text-white top-marging">
     <div class="col-8 offset-2">
         <form [formGroup]="loginForm" (ngSubmit)="login()" class="bg-color">
-            <h2 class="text-center mb-5 fs-1 fw-bold">Sign in</h2>
+            <h2 class="text-center mb-5 display-5 fw-bold">Sign-in</h2>
             <div class="mb-5">
                 <label class="form-label">Email</label>
                 <input type="email" class="form-control" formControlName="email">
+
+                <span *ngIf="emailFormControl.touched && emailFormControl.errors?.['required']">
+                    The email field is required
+                </span>
+        
+                <span *ngIf="emailFormControl.dirty && emailFormControl.errors?.['email']">
+                    The email field must be a valid email address.
+                </span>
             </div>
 
             <div class="mb-5">
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" formControlName="password">
+
+                <span *ngIf="passwordFormControl.touched && passwordFormControl.errors?.['required']">
+                    The password field is required
+                </span>
             </div>
 
             <div class="d-flex mb-5 justify-content-around">
@@ -26,7 +38,7 @@
 
             <button type="submit" class="btn button-bg-color mb-5" [disabled]="loginForm.invalid">Sign in</button>
             <div class="d-flex">
-                <h5 class="me-3">Need an account?</h5>
+                <h5 class="me-3">Need an account ?</h5>
                 <p><a class="link-color" routerLink="/register" routerLinkActive="active">Register</a></p>
             </div>
         </form>

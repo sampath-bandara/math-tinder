@@ -19,7 +19,6 @@ export class ProfileComponent {
   profileFormStudent: FormGroup;
   profileFormTutor: FormGroup;
   file = null;
-  formData = new FormData();
 
 
   constructor(private router: Router, private userService: UserService, private formBuilder: FormBuilder) {
@@ -75,17 +74,19 @@ export class ProfileComponent {
 
   updateProfile() {
 
-    if(this.file !== null){
-      this.formData.append('image', this.file);
-    }
-
     if (this.isStudent) {
+      let formData = new FormData();
       for (let key in this.profileFormStudent.value) {
-        this.formData.append(key, this.profileFormStudent.value[key]);
+        formData.append(key, this.profileFormStudent.value[key]);
       }
-      this.userService.updateStudentProfile(this.currentUserDetails.id,this.formData).subscribe({
+
+      if(this.file !== null){
+        formData.append('image', this.file);
+      }
+
+      this.userService.updateStudentProfile(this.currentUserDetails.id,formData).subscribe({
         next: (result) => {
-          console.log(result);
+          // console.log(result);
           alert('Student profile was updated successfully');
         },
         error: (err) => {
@@ -95,12 +96,18 @@ export class ProfileComponent {
       });
 
     } else {
+      let formData = new FormData();
       for (let key in this.profileFormTutor.value) {
-        this.formData.append(key, this.profileFormTutor.value[key]);
+        formData.append(key, this.profileFormTutor.value[key]);
       }
-      this.userService.updateTutorProfile(this.currentUserDetails.id,this.formData).subscribe({
+
+      if(this.file !== null){
+        formData.append('image', this.file);
+      }
+
+      this.userService.updateTutorProfile(this.currentUserDetails.id,formData).subscribe({
         next: (result) => {
-          console.log(result);
+          // console.log(result);
           alert('Tutor profile was updated successfully');
         },
         error: (err) => {
@@ -110,6 +117,8 @@ export class ProfileComponent {
       });
 
     }
+
+    this.router.navigate(["/"]);
 
   }
 

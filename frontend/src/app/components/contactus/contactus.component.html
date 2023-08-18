@@ -8,11 +8,33 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="mx-0 mx-lg-5 bg-oval" routerLink="/requests" routerLinkActive="active">Requests</div>
-            <div class="bg-oval" routerLink="/find-a-tutor" routerLinkActive="active" *ngIf="isStudent">Find a Tutor</div>
+            <div class="bg-oval" routerLink="/find-a-tutor" routerLinkActive="active" *ngIf="isStudent">Find a Tutor
+            </div>
             <div class="me-4 d-block d-lg-none bg-oval" (click)="logoutAlert()">Logout</div>
         </div>
         <div class="me-4 d-none d-lg-block bg-oval" (click)="logoutAlert()">Logout</div>
     </div>
 </nav>
 
-<h1 class="text-success">Contact Us</h1>
+<div class="row">
+    <div class="col-10 offset-1">
+        <div class="container mt-5 text-white bg-color">
+            <h1 class="mb-5 display-5">We love to hear from you...! </h1>
+            <form [formGroup]="contactForm" (ngSubmit)="send()">
+                <div class="mb-5">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" formControlName="name">
+                </div>
+                <div class="mb-5">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" formControlName="email">
+                </div>
+                <div class="mb-5">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" rows="5" formControlName="message"></textarea>
+                </div>
+                <button type="submit" class="btn button-bg-color text-white fw-bold" [disabled]="contactForm.invalid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="mx-0 mx-lg-5 bg-oval" routerLink="/requests" routerLinkActive="active">Requests</div>
-            <div class="bg-oval" routerLink="/find-a-tutor" routerLinkActive="active" *ngIf="isStudent">Find a Tutor</div>
+            <div class="bg-oval" routerLink="/find-a-tutor" routerLinkActive="active" *ngIf="isStudent">Find a Tutor
+            </div>
             <div class="me-4 d-block d-lg-none bg-oval" (click)="logoutAlert()">Logout</div>
         </div>
         <div class="me-4 d-none d-lg-block bg-oval" (click)="logoutAlert()">Logout</div>
@@ -16,74 +17,36 @@
 </nav>
 
 <!-- Search bar -->
-<div class="container-fluid mt-3 mx-1">
-    <form class="d-flex" role="search" [formGroup]="filterForm">
-        <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> -->
+<div class="container-fluid mt-3">
+    <div class="mx-auto custom-width">
+      <form class="d-flex" role="search" [formGroup]="filterForm">
         <select class="form-select me-3" formControlName="experience_id">
-            <option selected value=0>No Selection</option>
-            <option value=1>Less than a year</option>
-            <option value=2>1 to 5 years</option>
-            <option value=3>5 to 10 years</option>
-            <option value=4>More than 10 years</option>
+          <option selected value="0">No Selection</option>
+          <option value="1">Less than a year</option>
+          <option value="2">1 to 5 years</option>
+          <option value="3">5 to 10 years</option>
+          <option value="4">More than 10 years</option>
         </select>
-        <button class="btn btn-outline-primary" type="button" (click)="filter()">Filter</button>
-    </form>
-</div>
-
-<!-- Video -->
-<!-- <div class="video">
-    <video controls (click)="toggleVideo()" #videoPlayer>
-        <source src='http://localhost:3000/video.mp4' type="video/mp4" />
-        Browser not supported
-    </video>
-</div> -->
+        <button class="btn btn-primary" type="button" (click)="filter()">Filter</button>
+      </form>
+    </div>
+  </div>
 
 <!-- Tutors list -->
-
-<!-- <div class="mt-5 mx-3" *ngFor="let tutor of allTutors" data-bs-toggle="modal" data-bs-target="#tutorDetailsModal"
-    (click)="filterTutor(tutor.id)"> -->
-<div class="mt-5 mx-3" *ngFor="let tutor of allTutors" data-bs-toggle="modal" data-bs-target="#tutorDetailsModal">
-    <div class="card">
-        <div class="row g-0">
-            <div class="col-1">
-                <img [src]="'http://localhost:3000/' + tutor.image" class="img-fluid rounded-start"
-                    style="height: 150px; min-width: 90px;" alt="...">
-            </div>
-            <div class="col-10">
-                <div class="card-body">
-                    <h5 class="card-title">Name: {{tutor.name}}</h5>
-                    <p class="card-text">Email: {{tutor.email}}</p>
-                    <p class="card-text">Qualification: {{tutor.qualification.level}}</p>
-                    <p class="card-text">Experience: {{tutor.experience.category}}</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 font-family" *ngFor="let tutor of allTutors">
+            <div class="profile-card">
+                <img class="profile-picture" [src]="'http://localhost:3000/' + tutor.image" alt="'image' + tutor.id">
+                <div>
+                    <h5 class=""><span class="fw-bold" style="color: #551172;">{{tutor.name}}</span></h5>
+                    <h6 class=""><i class="fa-solid fa-envelope fa-xs me-2"></i><span class="fw-bold">Email:</span> {{tutor.email}}</h6>
+                    <h6 class=""><i class="fa-solid fa-graduation-cap fa-xs me-1"></i><span class="fw-bold">Qualification:</span> {{tutor.qualification.level}}</h6>
+                    <h6 class=""><i class="fa-solid fa-chalkboard-user fa-xs me-1"></i><span class="fw-bold">Experience:</span> {{tutor.experience.category}}</h6>
+                    <button type="button" class="btn btn-color btn-sm fw-bold" (click)="sendTutorRequestAlert(tutor.id, tutor.name)"
+                        style="--bs-btn-border-radius: 30px;">Request</button>
                 </div>
-            </div>
-            <div class="col-1">
-                <button type="button" class="btn btn-outline-primary"
-                    (click)="sendTutorRequestAlert(tutor.id)">Request</button>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Tutor details modal -->
-<!-- <div class="modal fade" id="tutorDetailsModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">{{filteredTutor[0].name}}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="card">
-                    <img [src]="'http://localhost:3000/' + filteredTutor[0].image " class="img-fluid rounded-start"
-                        style="min-height: 100px; min-width: 90px;" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">Email: {{filteredTutor[0].email}} </p>
-                        <p class="card-text">Qualification: {{filteredTutor[0].qualification.level}} </p>
-                        <p class="card-text">Experience: {{filteredTutor[0].experience.category}}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->

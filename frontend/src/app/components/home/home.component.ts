@@ -45,8 +45,48 @@ export class HomeComponent {
     }
   }
 
-  deleteRequest(tutor_id:number) {
-    console.log(tutor_id);
+  deleteTutor(tutor_id:number, tutor_name:string) {
+    let text = `Delete the tutor, ${tutor_name} ?`;
+    if (confirm(text) == true) {
+      this.userService.deleteRequest(this.currentUserDetails.id, tutor_id).subscribe({
+        next: (result) => {
+          alert("Tutor deleted successfully");
+
+          // Get tutor array index
+        let index = this.myTutors.findIndex((s) => {
+          return s.id === tutor_id;
+        });
+
+        // Delete student record
+        this.myTutors.splice(index, 1);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
+  }
+
+  deleteStudent(student_id:number, student_name:string) {
+    let text = `Delete the student, ${student_name} ?`;
+    if (confirm(text) == true) {
+      this.userService.deleteRequest(student_id,this.currentUserDetails.id).subscribe({
+        next: (result) => {
+          alert("Student deleted successfully");
+
+          // Get student array index
+        let index = this.myStudents.findIndex((s) => {
+          return s.id === student_id;
+        });
+
+        // Delete student record
+        this.myStudents.splice(index, 1);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+    }
   }
 
   logoutAlert() {
