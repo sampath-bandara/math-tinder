@@ -87,7 +87,9 @@ export class ProfileComponent {
       this.userService.updateStudentProfile(this.currentUserDetails.id,formData).subscribe({
         next: (result) => {
           // console.log(result);
+          localStorage.setItem("currentUser", JSON.stringify(result));
           alert('Student profile was updated successfully');
+          this.router.navigate(["/"]);
         },
         error: (err) => {
           console.log(err);
@@ -108,7 +110,9 @@ export class ProfileComponent {
       this.userService.updateTutorProfile(this.currentUserDetails.id,formData).subscribe({
         next: (result) => {
           // console.log(result);
+          localStorage.setItem("currentUser", JSON.stringify(result));
           alert('Tutor profile was updated successfully');
+          this.router.navigate(["/"]);
         },
         error: (err) => {
           console.log(err);
@@ -117,8 +121,6 @@ export class ProfileComponent {
       });
 
     }
-
-    this.router.navigate(["/"]);
 
   }
 

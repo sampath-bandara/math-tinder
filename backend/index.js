@@ -398,7 +398,7 @@ app.get('/tutor_profile/:tutor_id', (req, res) => {
 });
 
 //Tutor profile update
-app.put('/tutors/:tutor_id', (req, res) => {
+app.put('/tutors/:tutor_id', upload.single('image'), (req, res) => {
 
     let tutorId = parseInt(req.params.tutor_id);
 
@@ -413,7 +413,7 @@ app.put('/tutors/:tutor_id', (req, res) => {
             Object.assign(result, req.body);
 
             result.save().then(() => {
-                res.status(200).send(result);
+                res.status(200).send({ "role": "tutor", "name": result.name, "id": result.id });
             });
         } else {
             res.status(404).send('Tutor not found');
@@ -424,7 +424,7 @@ app.put('/tutors/:tutor_id', (req, res) => {
 });
 
 //Student profile update
-app.put('/students/:student_id', (req, res) => {
+app.put('/students/:student_id', upload.single('image'), (req, res) => {
 
     let studentId = parseInt(req.params.student_id);
 
@@ -439,7 +439,7 @@ app.put('/students/:student_id', (req, res) => {
             Object.assign(result, req.body);
 
             result.save().then(() => {
-                res.status(200).send(result);
+                res.status(200).send({ "role": "student", "name": result.name, "id": result.id });
             });
         } else {
             res.status(404).send('Student not found');
