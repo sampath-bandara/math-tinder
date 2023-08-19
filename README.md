@@ -1,3 +1,18 @@
+# :heart: Math Tinder :heart:
+
+## Tech Stack
+
+- Backend development using Express and MariaDB
+- Frontend development using Angular
+
+## App Features
+
+1. Any user can choose to become a tutor or student.
+2. Users can create an account and update their profile information.
+3. Students can send requests to the tutors.
+4. Tutors can accept or reject the requests.
+
+
 # Frontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
