@@ -1,8 +1,11 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Itutor } from '../interfaces/itutor';
 import { Istudent } from '../interfaces/istudent';
 import { Irequest } from '../interfaces/irequest';
+import { Imessage } from '../interfaces/imessage';
+import { Icontactmessage } from '../interfaces/icontactmessage';
+import { Observable, Subject, interval, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,28 +14,28 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) { }
 
-  registerTutor(formData: any){
+  registerTutor(formData: any) {
     return this.httpClient.post<Itutor>('http://localhost:3000/tutor_register', formData);
   }
 
-  loginTutor(formData: any){
+  loginTutor(formData: any) {
     return this.httpClient.post<Itutor>('http://localhost:3000/tutor_login', formData);
   }
 
-  registerStudent(formData: any){
+  registerStudent(formData: any) {
     return this.httpClient.post<Istudent>('http://localhost:3000/student_register', formData);
   }
 
-  loginStudent(formData: any){
+  loginStudent(formData: any) {
     return this.httpClient.post<Istudent>('http://localhost:3000/student_login', formData);
   }
 
-  getUserData(){
+  getUserData() {
     let data = localStorage.getItem('currentUser');
     return data ? JSON.parse(data) : null; //JSON.parse converts string to an object
   }
 
-  isAuthenticated(){
+  isAuthenticated() {
     return (this.getUserData() !== null) ? true : false;
   }
 
@@ -52,15 +55,15 @@ export class UserService {
     return this.httpClient.get<Irequest[]>(`http://localhost:3000/tutor_requests/${userId}`);
   }
 
-  acceptOrReject(tutorID:number, studentId:number, status:string) {
-    return this.httpClient.patch<Irequest>(`http://localhost:3000/student_requests/${tutorID}/${studentId}`,status);
+  acceptOrReject(tutorID: number, studentId: number, status: string) {
+    return this.httpClient.patch<Irequest>(`http://localhost:3000/student_requests/${tutorID}/${studentId}`, status);
   }
 
   filterTutors(experienceId: number) {
     return this.httpClient.get<Itutor[]>(`http://localhost:3000/filter/${experienceId}`);
   }
 
-  sendTutorRequest(formData:any) {
+  sendTutorRequest(formData: any) {
     return this.httpClient.post<Irequest>(`http://localhost:3000/tutor_requets`, formData);
   }
 
@@ -84,11 +87,19 @@ export class UserService {
     return this.httpClient.put<Itutor>(`http://localhost:3000/tutors/${userId}`, formData);
   }
 
-  deleteRequest(student_id:number, tutor_id:number) {
+  deleteRequest(student_id: number, tutor_id: number) {
     return this.httpClient.delete<Irequest>(`http://localhost:3000/requests/${student_id}/${tutor_id}`);
   }
 
-  sendContactMessage(formData:any) {
-    return this.httpClient.post<Istudent>(`http://localhost:3000/contact_us`, formData);
+  sendContactMessage(formData: any) {
+    return this.httpClient.post<Icontactmessage>(`http://localhost:3000/contact_us`, formData);
+  }
+
+  getAllMessages(studentId: number, tutorId: number) {
+    return this.httpClient.get<Imessage[]>(`http://localhost:3000/messages/${studentId}/${tutorId}`);
+  }
+
+  sendMessage(studentId: number, tutorId: number, formData: any) {
+    return this.httpClient.post<Imessage>(`http://localhost:3000/messages/${studentId}/${tutorId}`, formData);
   }
 }

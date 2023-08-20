@@ -10,6 +10,7 @@ const Qualification = require('./models/qualification');
 const ContactMessage = require('./models/contact-message');
 const Experience = require('./models/experience');
 const Request = require('./models/request');
+const Message = require('./models/message');
 
 //Middlewares
 app.use(cors());
@@ -298,9 +299,9 @@ app.get('/filter/:experience_id', (req, res) => {
 app.post('/tutor_requets', (req, res) => {
     let requestData = req.body;
 
-    console.log("1: " + requestData);
+    // console.log("1: " + requestData);
     requestData.status = 'pending';
-    console.log("2: " + requestData);
+    // console.log("2: " + requestData);
 
     //Filter the relevant row basede on the tutor_id and student_id
     let data = {
@@ -491,6 +492,44 @@ app.post('/contact_us', (req, res) => {
         res.status(200).send(result);
     }).catch((err) => {
         res.status(500).send(err);
+    });
+});
+
+
+//Send a message
+app.post('/messages/:student_id/:tutor_id',upload.single('image'), (req, res) => {
+
+    console.log(req.body);
+
+    req.body.student_id = parseInt(req.params.student_id);
+    req.body.tutor_id = parseInt(req.params.tutor_id);
+
+    req.body.message_date = new Date();
+
+    console.log(req.body);
+
+    //Create the message in the database
+    Message.create(req.body).then((result) => {
+        res.status(200).send(result);
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
+});
+
+//Get all the messages using tutor_id and student_id
+app.get('/messages/:student_id/:tutor_id', (req, res) => {
+
+    let data = {
+        where: {
+            student_id: parseInt(req.params.student_id),
+            tutor_id: parseInt(req.params.tutor_id),
+        },
+    }
+
+    Message.findAll(data).then((results) => {
+        res.status(200).send(results);
+    }).catch((err) => {
+        console.log(err);
     });
 });
 

@@ -7,7 +7,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="mx-0 mx-lg-5 bg-oval position-relative" routerLink="/requests" routerLinkActive="active">Requests
+            <div class="mx-0 mx-lg-5 bg-oval position-relative" routerLink="/requests" routerLinkActive="active">
+                Requests
             </div>
             <div class="bg-oval" routerLink="/find-a-tutor" routerLinkActive="active" *ngIf="isStudent">Find a Tutor
             </div>
@@ -24,14 +25,22 @@
         <div class="row justify-content-center">
             <div class="col-lg-6 font-family" *ngFor="let request of myTutorRequests">
                 <div class="profile-card">
-                    <img class="profile-picture" [src]="'http://localhost:3000/' + request.tutor.image" alt="'image' + request.tutor.id">
+                    <img class="profile-picture" [src]="'http://localhost:3000/' + request.tutor.image"
+                        alt="'image' + request.tutor.id">
                     <div>
                         <h5 class=""><span class="fw-bold" style="color: #551172;">{{request.tutor.name}}</span></h5>
-                        <h6 class=""><i class="fa-solid fa-envelope fa-xs me-2"></i><span class="fw-bold">Email:</span> {{request.tutor.email}}</h6>
-                        <h6 class=""><i class="fa-solid fa-graduation-cap fa-xs me-1"></i><span class="fw-bold">Qualification:</span> {{request.tutor.qualification.level}}</h6>
-                        <h6 class=""><i class="fa-solid fa-chalkboard-user fa-xs me-1"></i><span class="fw-bold">Experience:</span> {{request.tutor.experience.category}}</h6>
-                        <button type="button" class="btn btn-danger btn-sm fw-bold" (click)="deleteRequest(request.tutor.id, request.tutor.name)"
+                        <h6 class=""><i class="fa-solid fa-envelope fa-xs me-2"></i><span class="fw-bold">Email:</span>
+                            {{request.tutor.email}}</h6>
+                        <h6 class=""><i class="fa-solid fa-graduation-cap fa-xs me-1"></i><span
+                                class="fw-bold">Qualification:</span> {{request.tutor.qualification.level}}</h6>
+                        <h6 class=""><i class="fa-solid fa-chalkboard-user fa-xs me-1"></i><span
+                                class="fw-bold">Experience:</span> {{request.tutor.experience.category}}</h6>
+                        <button type="button" class="btn btn-danger btn-sm fw-bold me-3"
+                            (click)="deleteRequest(request.tutor.id, request.tutor.name)"
                             style="--bs-btn-border-radius: 30px;">Delete</button>
+                        <button type="button" class="btn btn-color btn-sm fw-bold"
+                            (click)="getMessages(request.tutor.id, request.tutor.name)" data-bs-toggle="modal"
+                            data-bs-target="#messageModalTutor" style="--bs-btn-border-radius: 30px;">Message</button>
                     </div>
                 </div>
             </div>
@@ -50,15 +59,126 @@
                         alt="'image' + request.student.id">
                     <div>
                         <h5 class=""><span class="fw-bold" style="color: #551172;">{{request.student.name}}</span></h5>
-                        <h6 class=""><i class="fa-solid fa-envelope fa-xs me-2"></i><span class="fw-bold">Email:</span> {{request.student.email}}</h6>
-                        <h6 class=""><i class="fa-solid fa-book-open fa-xs me-2"></i><span class="fw-bold">Grade:</span> {{request.student.grade}}</h6>
-                        <button type="button" class="btn btn-success btn-sm me-3 fw-bold" (click)="acceptStudent(request.student.id, request.student.name)"
+                        <h6 class=""><i class="fa-solid fa-envelope fa-xs me-2"></i><span class="fw-bold">Email:</span>
+                            {{request.student.email}}</h6>
+                        <h6 class=""><i class="fa-solid fa-book-open fa-xs me-2"></i><span class="fw-bold">Grade:</span>
+                            {{request.student.grade}}</h6>
+                        <button type="button" class="btn btn-success btn-sm me-3 fw-bold"
+                            (click)="acceptStudent(request.student.id, request.student.name)"
                             style="--bs-btn-border-radius: 30px;">Accept</button>
-                        <button type="button" class="btn btn-danger btn-sm fw-bold" (click)="rejectStudent(request.student.id, request.student.name)"
+                        <button type="button" class="btn btn-danger btn-sm fw-bold me-3"
+                            (click)="rejectStudent(request.student.id, request.student.name)"
                             style="--bs-btn-border-radius: 30px;">Reject</button>
+                        <button type="button" class="btn btn-color btn-sm fw-bold"
+                            (click)="getMessages(request.student.id, request.student.name)" data-bs-toggle="modal"
+                            data-bs-target="#messageModalStudent" style="--bs-btn-border-radius: 30px;">Message</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </ng-template>
+
+<!-- Student Message Modal -->
+<div class="modal fade" style="height: 80%;" id="messageModalStudent" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header modal-header-bg-color">
+                <h1 class="modal-title fs-5">{{messageName}}</h1>
+                <button type="button" data-bs-dismiss="modal" class="btn" aria-label="Close"><i class="fa-solid fa-xmark fa-xl" style="color: #ffffff;"></i></button>
+            </div>
+            <div class="modal-body modal-body-bg-color">
+                <div class="container py-3" id="messageContainer">
+                    <div class="row">
+                        <div class="col-12" *ngFor="let m of myMessages let isFirst = first">
+                            <div class="d-flex flex-column align-items-start"
+                                *ngIf="m.sender_role === 'student'; else createReceivedMessageTemplate">
+                                <div class="bg-light rounded-pill pt-2 pb-2 ps-5 pe-5 mb-3" [ngClass]="{'first-element': isFirst, 'bg-light': !isFirst}">
+                                    <p>{{m.new_message}}</p>
+                                    <small class="text-muted">{{m.message_date | date:'yyyy-MM-dd HH:mm:ss'}}</small>
+                                </div>
+                            </div>
+                            <ng-template #createReceivedMessageTemplate>
+                                <div class="d-flex flex-column align-items-end">
+                                    <div class="message outgoing bg-light rounded-pill pt-2 pb-2 ps-5 pe-5 mb-3" [ngClass]="{'first-element': isFirst, 'bg-light': !isFirst}">
+                                        <p>{{m.new_message}}</p>
+                                        <small class="text-muted">{{m.message_date | date:'yyyy-MM-dd
+                                            HH:mm:ss'}}</small>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer-bg-color">
+                <form class="row g-2" [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+                    <div class="col-2">
+                        <button type="button" class="btn btn-color rounded-pill" (click)="getAllMessages()">
+                            <i class="fa-solid fa-arrows-rotate"></i></button>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" class="form-control" formControlName="new_message">
+                    </div>
+                    <div class="col-1">
+                        <button type="submit" class="btn btn-color rounded-pill" [disabled]="messageForm.invalid">
+                            <i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tutor Message Modal -->
+<div class="modal fade" style="height: 80%;" id="messageModalTutor" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header modal-header-bg-color">
+                <h1 class="modal-title fs-5">{{messageName}}</h1>
+                <button type="button" data-bs-dismiss="modal" class="btn" aria-label="Close"><i class="fa-solid fa-xmark fa-xl" style="color: #ffffff;"></i></button>
+            </div>
+            <div class="modal-body modal-body-bg-color">
+                <div class="container py-3" id="messageContainer">
+                    <div class="row">
+                        <div class="col-12" *ngFor="let m of myMessages; let isFirst = first">
+                            <div class="d-flex flex-column align-items-start"
+                                *ngIf="m.sender_role === 'tutor'; else createReceivedMessageTemplate">
+                                <div class="rounded-pill pt-2 pb-2 ps-5 pe-5 mb-3" [ngClass]="{'first-element': isFirst, 'bg-light': !isFirst}">
+                                    <p>{{m.new_message}}</p>
+                                    <small class="text-muted">{{m.message_date | date:'yyyy-MM-dd HH:mm:ss'}}</small>
+                                </div>
+                            </div>
+                            <ng-template #createReceivedMessageTemplate>
+                                <div class="d-flex flex-column align-items-end">
+                                    <div class="message outgoing bg-light rounded-pill pt-2 pb-2 ps-5 pe-5 mb-3" [ngClass]="{'first-element': isFirst, 'bg-light': !isFirst}">
+                                        <p>{{m.new_message}}</p>
+                                        <small class="text-muted">{{m.message_date | date:'yyyy-MM-dd
+                                            HH:mm:ss'}}</small>
+                                    </div>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer-bg-color">
+                <form class="row g-2" [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+                    <div class="col-2">
+                        <button type="button" class="btn btn-color rounded-pill" (click)="getAllMessages()">
+                            <i class="fa-solid fa-arrows-rotate"></i></button>
+                    </div>
+                    <div class="col-9">
+                        <input type="text" class="form-control" formControlName="new_message">
+                    </div>
+                    <div class="col-1">
+                        <button type="submit" class="btn btn-color rounded-pill" [disabled]="messageForm.invalid"><i
+                                class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-# :heart: Math Tinder :heart:
+# :math-formula-16-filled: Math Tinder :math-integral:
 
 ## Tech Stack
 
@@ -13,30 +13,80 @@
 4. Tutors can accept or reject the requests.
 
 
-# Frontend
+## Table of Contents
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.3.
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Backend (Express.js)](#backend-expressjs)
+- [Database (MariaDB)](#database-mariadb)
+- [Frontend (Angular)](#frontend-angular)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Development server
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project demonstrates the implementation of a web application with a decoupled architecture, utilizing Express.js for the backend API, MariaDB as the database, and Angular for the frontend user interface. The application showcases the basic interactions between these components, providing a foundation for further development and customization.
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Follow these steps to set up and run the application locally:
 
-## Build
+1. Clone the repository:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   ```bash
+   git clone https://github.com/your-username/Express-MariaDB-Angular-App.git
+   cd Express-MariaDB-Angular-App
 
-## Running unit tests
+2. Install backend dependencies and start the Express server:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    ```bash
+    cd backend
+    npm install
+    npm start
 
-## Running end-to-end tests
+3. Install frontend dependencies and run the Angular app:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    ```bash
+    cd ../frontend
+    npm install
+    ng serve
 
-## Further help
+Your application should now be accessible at http://localhost:4200.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## Usage
+
+This section can include any specific usage instructions or guidelines for the application. For example, how to perform CRUD operations, navigate through the frontend interface, and interact with the API endpoints.
+
+## Backend (Express.js)
+
+The backend of the application is built using Express.js, a popular Node.js framework for building robust and scalable web applications. It provides API endpoints to interact with the frontend and manage data in the database. Key features:
+
+* RESTful API endpoints
+* Middleware for authentication, error handling, etc.
+* Modular route organization
+
+## Database (MariaDB)
+
+The application uses MariaDB, a powerful open-source relational database, to store and manage data. MariaDB provides data persistence and retrieval for the backend of the application. Key aspects:
+
+* Schema design and data modeling
+* CRUD operations using SQL queries
+* Connection pooling and optimization
+
+## Frontend (Angular)
+
+The frontend is built using Angular, a modern and powerful framework for building dynamic single-page applications. It provides an interactive user interface to interact with the backend services. Features:
+
+* Component-based architecture
+* Data binding
+* Routing and navigation
+
+## Contributing
+
+Contributions to this project are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
+
+## License
+
+This project is copy righted, allowing you to use, modify, and distribute the code for non-commercial purposes.
