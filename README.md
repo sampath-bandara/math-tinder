@@ -1,4 +1,4 @@
-# :math-formula-16-filled: Math Tinder :math-integral:
+# :hourglass_flowing_sand: Math Tinder :infinity:
 
 ## Tech Stack
 
