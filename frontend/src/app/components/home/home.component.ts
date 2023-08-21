@@ -172,6 +172,10 @@ export class HomeComponent {
     }
   }
 
+  clearForm() {
+    this.messageForm.reset();
+  }
+
   logoutAlert() {
     let text = "Are you sure?";
     if (confirm(text) == true) {

@@ -1,4 +1,4 @@
-# :math-formula-16-filled: Math Tinder :math-integral:
+# :hourglass_flowing_sand: Math Tinder :infinity:
 
 ## Tech Stack
 
@@ -35,8 +35,8 @@ Follow these steps to set up and run the application locally:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/Express-MariaDB-Angular-App.git
-   cd Express-MariaDB-Angular-App
+   git clone https://github.com/sampath-bandara/math-tinder.git
+   cd math-tinder
 
 2. Install backend dependencies and start the Express server:
 

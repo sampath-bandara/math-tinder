@@ -49,11 +49,6 @@
     background-color: rgba(127, 255, 212, 0.845);
 }
 
-.btn-color {
-    background-color: #8b1c61;
-    color: white;
-}
-
 @media (max-width: 991px) {
     .bg-oval {
         background: none;

@@ -40,7 +40,7 @@
                         <button type="button" class="btn btn-danger btn-sm fw-bold me-3"
                             (click)="deleteTutor(request.tutor.id, request.tutor.name)"
                             style="--bs-btn-border-radius: 30px;">Delete</button>
-                        <button type="button" class="btn btn-color btn-sm fw-bold"
+                        <button type="button" class="btn btn-primary btn-sm fw-bold"
                             (click)="getMessages(request.tutor.id, request.tutor.name)" data-bs-toggle="modal"
                             data-bs-target="#messageModalTutor" style="--bs-btn-border-radius: 30px;">Message</button>
                     </div>
@@ -72,7 +72,7 @@
                         <button type="button" class="btn btn-danger btn-sm fw-bold me-3"
                             (click)="deleteStudent(request.student.id, request.student.name)"
                             style="--bs-btn-border-radius: 30px;">Delete</button>
-                        <button type="button" class="btn btn-color btn-sm fw-bold"
+                        <button type="button" class="btn btn-primary btn-sm fw-bold"
                             (click)="getMessages(request.student.id, request.student.name)" data-bs-toggle="modal"
                             data-bs-target="#messageModalStudent" style="--bs-btn-border-radius: 30px;">Message</button>
                     </div>
@@ -89,7 +89,7 @@
         <div class="modal-content">
             <div class="modal-header modal-header-bg-color">
                 <h1 class="modal-title fs-5">{{messageName}}</h1>
-                <button type="button" data-bs-dismiss="modal" class="btn" aria-label="Close"><i class="fa-solid fa-xmark fa-xl" style="color: #ffffff;"></i></button>
+                <button type="button" data-bs-dismiss="modal" class="btn" aria-label="Close" (click)="clearForm()"><i class="fa-solid fa-xmark fa-xl" style="color: #ffffff;"></i></button>
             </div>
             <div class="modal-body modal-body-bg-color">
                 <div class="container py-3" id="messageContainer">
@@ -118,14 +118,14 @@
             <div class="modal-footer-bg-color">
                 <form class="row g-2" [formGroup]="messageForm" (ngSubmit)="sendMessage()">
                     <div class="col-2">
-                        <button type="button" class="btn btn-color rounded-pill" (click)="getAllMessages()">
+                        <button type="button" class="btn btn-primary rounded-pill" (click)="getAllMessages()">
                             <i class="fa-solid fa-arrows-rotate"></i></button>
                     </div>
                     <div class="col-9">
                         <input type="text" class="form-control" formControlName="new_message">
                     </div>
                     <div class="col-1">
-                        <button type="submit" class="btn btn-color rounded-pill" [disabled]="messageForm.invalid">
+                        <button type="submit" class="btn btn-primary rounded-pill" [disabled]="messageForm.invalid">
                             <i class="fa-solid fa-paper-plane"></i></button>
                     </div>
                 </form>
@@ -141,7 +141,7 @@
         <div class="modal-content">
             <div class="modal-header modal-header-bg-color">
                 <h1 class="modal-title fs-5">{{messageName}}</h1>
-                <button type="button" data-bs-dismiss="modal" class="btn" aria-label="Close"><i class="fa-solid fa-xmark fa-xl" style="color: #ffffff;"></i></button>
+                <button type="button" data-bs-dismiss="modal" class="btn" aria-label="Close" (click)="clearForm()"><i class="fa-solid fa-xmark fa-xl" style="color: #ffffff;"></i></button>
             </div>
             <div class="modal-body modal-body-bg-color">
                 <div class="container py-3" id="messageContainer">
@@ -170,14 +170,14 @@
             <div class="modal-footer-bg-color">
                 <form class="row g-2" [formGroup]="messageForm" (ngSubmit)="sendMessage()">
                     <div class="col-2">
-                        <button type="button" class="btn btn-color rounded-pill" (click)="getAllMessages()">
+                        <button type="button" class="btn btn-primary rounded-pill" (click)="getAllMessages()">
                             <i class="fa-solid fa-arrows-rotate"></i></button>
                     </div>
                     <div class="col-9">
                         <input type="text" class="form-control" formControlName="new_message">
                     </div>
                     <div class="col-1">
-                        <button type="submit" class="btn btn-color rounded-pill" [disabled]="messageForm.invalid"><i
+                        <button type="submit" class="btn btn-primary rounded-pill" [disabled]="messageForm.invalid"><i
                                 class="fa-solid fa-paper-plane"></i></button>
                     </div>
                 </form>
