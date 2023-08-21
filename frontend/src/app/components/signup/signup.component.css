@@ -20,7 +20,7 @@
 }
 
 input, select {
-    background-color: #f3e1fb;
+    /* background-color: #f3e1fb; */
 }
 
 h2 {
@@ -30,4 +30,13 @@ h2 {
 
 h1 {
     font-family: 'Dancing Script', cursive;
+}
+
+.modal-body-bg-color {
+    background-color: #f3e1fb;
+}
+
+.modal-header-bg-color {
+    background-color: #551172e2;
+    color: white;
 }

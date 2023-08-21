@@ -45,15 +45,15 @@
 <div class="modal fade" id="studentRegisterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header modal-header-bg-color">
                 <h1 class="modal-title fs-3" *ngIf="isStudent; else showTutorTitle">Student
                     Register Form</h1>
                 <ng-template #showTutorTitle>
                     <h1 class="modal-title fs-3">Tutor Register Form</h1>
                 </ng-template>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-xmark fa-xl" style="color: #ffffff;"></i></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body modal-body-bg-color">
                 <!-- Student register form -->
                 <form [formGroup]="registerFormStudent" (ngSubmit)="register()" *ngIf="isStudent; else showTutorForm">
                     <div class="mb-5">
@@ -107,7 +107,7 @@
 
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <button type="submit" class="btn button-bg-color"
+                        <button type="submit" class="btn btn-primary"
                             [disabled]="registerFormStudent.invalid" data-bs-dismiss="modal">Register</button>
                     </div>
                 </form>
