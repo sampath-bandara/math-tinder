@@ -32,7 +32,7 @@
 }
 
 .profile-card-tutor {
-    height: 200px;
+    min-height: 200px;
     display: flex;
     justify-content: start;
     align-items: center;

@@ -20,7 +20,7 @@
 }
 
 .profile-card {
-    height: 220px;
+    min-height: 200px;
     display: flex;
     justify-content: start;
     align-items: center;
