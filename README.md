@@ -28,6 +28,14 @@
 
 This project demonstrates the implementation of a web application with a decoupled architecture, utilizing Express.js for the backend API, MariaDB as the database, and Angular for the frontend user interface. The application showcases the basic interactions between these components, providing a foundation for further development and customization.
 
+## Screenshots
+
+![Screenshot 1](screenshots/about.png)
+*About Page*
+
+![Screenshot 2](screenshots/contact_us.png)
+*Contact Us Page*
+
 ## Installation
 
 Follow these steps to set up and run the application locally:
