@@ -36,6 +36,52 @@ This project demonstrates the implementation of a web application with a decoupl
 *Contact Us Page*
 ![Screenshot 2](screenshots/contact_us.png)
 
+*Sign-In Page*
+![Screenshot 3](screenshots/sign_in.png)
+
+*Sign-Up Page*
+![Screenshot 4](screenshots/sign_up.png)
+
+*Student Sign-up Page*
+![Screenshot 5](screenshots/student_sign_up.png)
+
+*Tutor Sign-up Page*
+![Screenshot 6](screenshots/tutor_sign_up.png)
+
+*Student Dashboard Page*
+![Screenshot 7](screenshots/student_dashboard.png)
+
+*Student Profile Page*
+![Screenshot 8](screenshots/student_profile.png)
+
+*Tutor Requests Page*
+![Screenshot 9](screenshots/tutor_requests.png)
+
+*Find a Tutor Page*
+![Screenshot 10](screenshots/find_a_tutor.png)
+
+*Filter Tutors based on the experience*
+![Screenshot 11](screenshots/filter_tutors.png)
+
+*Message Tutors*
+![Screenshot 12](screenshots/message_tutors.png)
+
+*Tutor Dashboard Page*
+![Screenshot 13](screenshots/tutor_dashboard.png)
+
+*Tutor Profile Page*
+![Screenshot 14](screenshots/tutor_profile.png)
+
+*Student Requests Page*
+![Screenshot 15](screenshots/student_requests.png)
+
+*Message Students*
+![Screenshot 16](screenshots/message_students.png)
+
+*Responsive Left Nav Bar*
+![Screenshot 17](screenshots/responsive_nav_bar.png)
+
+
 ## Installation
 
 Follow these steps to set up and run the application locally:
