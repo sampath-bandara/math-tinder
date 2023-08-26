@@ -30,11 +30,11 @@ This project demonstrates the implementation of a web application with a decoupl
 
 ## Screenshots
 
-![Screenshot 1](screenshots/about.png)
 *About Page*
+![Screenshot 1](screenshots/about.png)
 
-![Screenshot 2](screenshots/contact_us.png)
 *Contact Us Page*
+![Screenshot 2](screenshots/contact_us.png)
 
 ## Installation
 
